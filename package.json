@@ -1,0 +1,42 @@
+{
+  "name": "hive-automation",
+  "version": "1.0.0",
+  "description": "End-to-end test suite for Hive HR application using Playwright",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test tests/ui",
+    "test:api": "playwright test tests/api",
+    "test:data": "playwright test tests/data",
+    "test:ai": "playwright test tests/ai",
+    "test:auth": "playwright test tests/auth",
+    "test:roles": "playwright test tests/roles",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "test:role:super-admin": "playwright test --project=super-admin",
+    "test:role:hr-admin": "playwright test --project=hr-admin",
+    "test:role:payroll-admin": "playwright test --project=payroll-admin",
+    "test:role:finance-admin": "playwright test --project=finance-admin",
+    "test:role:manager": "playwright test --project=manager",
+    "test:role:employee": "playwright test --project=employee",
+    "test:role:auditor": "playwright test --project=auditor",
+    "test:role:recruiter": "playwright test --project=recruiter",
+    "test:ci": "playwright test --reporter=github",
+    "setup": "playwright test --project=setup",
+    "codegen": "playwright codegen http://localhost:3001",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "dotenv": "^16.4.0",
+    "eslint": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0"
+  }
+}
