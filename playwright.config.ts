@@ -26,9 +26,9 @@ export default defineConfig({
 
   use: {
     baseURL: HIVE_URL,
-    trace: 'retain-on-failure',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    trace: 'on',
+    screenshot: 'on',
+    video: 'on',
     actionTimeout: 15_000,
     navigationTimeout: 30_000,
   },
