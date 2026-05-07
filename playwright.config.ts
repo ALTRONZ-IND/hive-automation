@@ -8,8 +8,13 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 const HIVE_URL = process.env.HIVE_URL ?? 'http://localhost:3001';
 const IDENTITY_URL = process.env.IDENTITY_URL ?? 'http://localhost:3000';
 
+// Each run gets its own timestamped folder so results are never overwritten.
+const RUN_ID = process.env.RUN_ID
+  ?? new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+
 export default defineConfig({
   testDir: './tests',
+  outputDir: `./test-results/${RUN_ID}`,
   timeout: 60_000,
   expect: { timeout: 10_000 },
   fullyParallel: true,
@@ -19,8 +24,8 @@ export default defineConfig({
 
   reporter: [
     ['list'],
-    ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['json', { outputFile: 'playwright-report/results.json' }],
+    ['html', { outputFolder: `./playwright-report/${RUN_ID}`, open: 'never' }],
+    ['json', { outputFile: `./playwright-report/${RUN_ID}/results.json` }],
     ...(process.env.CI ? [['github'] as ['github']] : []),
   ],
 
